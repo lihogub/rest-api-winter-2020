@@ -3,10 +3,10 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
-/*
+
 console.log(`mongodb+srv://${process.env.MONGODBUSER}:${process.env.MONGODBPASS}@\
 ${process.env.MONGODBSERVER}:/${process.env.MONGODBNAME}?retryWrites=true&w=majority`);
-*/
+
 
 mongoose.connect(`mongodb+srv://${process.env.MONGODBUSER}:${process.env.MONGODBPASS}@\
 ${process.env.MONGODBSERVER}:/${process.env.MONGODBNAME}?retryWrites=true&w=majority`,
