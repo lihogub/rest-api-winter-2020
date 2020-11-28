@@ -50,7 +50,8 @@ app.get('/get/expertise', (req, res) => {
 });
 
 app.get('/get/rate', (req, res) => {
-    Rate.find({}, {_id: 0}).exec((err, items)=>{res.send(items)})
+    console.log("rate req");
+    Rate.find({}, {_id: 0}).exec((err, items)=>{console.log(items); res.send(items);})
 });
 
 app.get('/get/worker', (req, res) => {
