@@ -33,27 +33,27 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-app.get('/get/achievement', (req, res) => {
+app.get('/achievement', (req, res) => {
     Achievement.find({}, {_id: 0}).exec((err, items)=>{res.send(items)})
 });
 
-app.get('/get/advantage', (req, res) => {
+app.get('/advantage', (req, res) => {
     Advantage.find({}, {_id: 0}).exec((err, items)=>{res.send(items)})
 });
 
-app.get('/get/competency', (req, res) => {
+app.get('/competency', (req, res) => {
     Competency.find({}, {_id: 0}).exec((err, items)=>{res.send(items)})
 });
 
-app.get('/get/expertise', (req, res) => {
+app.get('/expertise', (req, res) => {
     Expertise.find({}, {_id: 0}).exec((err, items)=>{res.send(items)})
 });
 
-app.get('/get/rate', (req, res) => {
+app.get('/rate', (req, res) => {
     Rate.find({}, {_id: 0}).exec((err, items)=>{res.send(items)})
 });
 
-app.get('/get/worker', (req, res) => {
+app.get('/worker', (req, res) => {
     Worker.find({}, {_id: 0}).exec((err, items)=>{res.send(items)})
 });
 
