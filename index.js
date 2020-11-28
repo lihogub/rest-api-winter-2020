@@ -35,37 +35,41 @@ app.get('/', (req, res) => {
     res.send('Hello World! It is REST API server.');
 });
 
-app.get('/get/achievement', (req, res) => {
+app.get('/api', (req, res) => {
+    res.send("You must specify method.");
+});
+
+app.get('/api/achievement', (req, res) => {
     Achievement.find({}, {_id: 0}).exec((err, items) => {
         res.send(items);
     });
 });
 
-app.get('/get/advantage', (req, res) => {
+app.get('/api/advantage', (req, res) => {
     Advantage.find({}, {_id: 0}).exec((err, items) => {
         res.send(items);
     });
 });
 
-app.get('/get/competency', (req, res) => {
+app.get('/api/competency', (req, res) => {
     Competency.find({}, {_id: 0}).exec((err, items) => {
         res.send(items);
     });
 });
 
-app.get('/get/expertise', (req, res) => {
+app.get('/api/expertise', (req, res) => {
     Expertise.find({}, {_id: 0}).exec((err, items) => {
         res.send(items);
     });
 });
 
-app.get('/get/rate', (req, res) => {
+app.get('/api/rate', (req, res) => {
     Rate.find({}, {_id: 0}).exec((err, items) => {
         res.send(items);
     });
 });
 
-app.get('/get/worker', (req, res) => {
+app.get('/api/worker', (req, res) => {
     Worker.find({}, {_id: 0}).exec((err, items) => {
         res.send(items);
     });
