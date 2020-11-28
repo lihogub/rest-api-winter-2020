@@ -15,6 +15,17 @@ const AchievementSchema = new mongoose.Schema({id: Number, title: String, desc: 
 const AdvantageSchema = new mongoose.Schema({id: Number, title: String, desc: String}, {collection: 'advantage'});
 const CompetencySchema = new mongoose.Schema({id: Number, text: String}, {collection: 'competency'});
 const ExpertiseSchema = new mongoose.Schema({id: Number, text: String}, {collection: 'expertise'});
+const MenuSchema = new mongoose.Schema({
+        id: Number,
+        ref: String,
+        text: String,
+        drop: [mongoose.Schema({ref: String, text: String})]
+    },
+    {
+        collection: 'menu'
+    }
+    )
+;
 const RateSchema = new mongoose.Schema({
     id: Number,
     title: String,
@@ -29,7 +40,7 @@ const Competency = mongoose.model('Competency', CompetencySchema);
 const Expertise = mongoose.model('Expertise', ExpertiseSchema);
 const Rate = mongoose.model('Rate', RateSchema);
 const Worker = mongoose.model('Worker', WorkerSchema);
-
+const Menu = mongoose.model('Menu', MenuSchema);
 
 app.get('/', (req, res) => {
     res.send('Hello World! It is REST API server.');
@@ -59,6 +70,12 @@ app.get('/api/competency', (req, res) => {
 
 app.get('/api/expertise', (req, res) => {
     Expertise.find({}, {_id: 0}).exec((err, items) => {
+        res.send(items);
+    });
+});
+
+app.get('/api/menu', (req, res) => {
+    Menu.find({}, {_id: 0}).exec((err, items) => {
         res.send(items);
     });
 });
