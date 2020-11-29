@@ -42,6 +42,10 @@ const Rate = mongoose.model('Rate', RateSchema);
 const Worker = mongoose.model('Worker', WorkerSchema);
 const Menu = mongoose.model('Menu', MenuSchema);
 
+
+const cors = require('cors');
+app.use(cors({ origin: true }));
+
 app.get('/', (req, res) => {
     res.send('Hello World! It is REST API server.');
 });
