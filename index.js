@@ -33,6 +33,8 @@ const RateSchema = new mongoose.Schema({
     features: [String]
 }, {collection: 'rate'});
 const WorkerSchema = new mongoose.Schema({id: Number, name: String, job: String}, {collection: 'worker'});
+const TestimonialSchema = new mongoose.Schema({id: Number, text: String, sign: String, link: String}, {collection: 'testimonial'});
+
 
 const Achievement = mongoose.model('Achievement', AchievementSchema);
 const Advantage = mongoose.model('Advantage', AdvantageSchema);
@@ -41,6 +43,7 @@ const Expertise = mongoose.model('Expertise', ExpertiseSchema);
 const Rate = mongoose.model('Rate', RateSchema);
 const Worker = mongoose.model('Worker', WorkerSchema);
 const Menu = mongoose.model('Menu', MenuSchema);
+const Testimonial = mongoose.model('Testimonial', TestimonialSchema);
 
 
 const cors = require('cors');
@@ -92,6 +95,12 @@ app.get('/api/rate', (req, res) => {
 
 app.get('/api/worker', (req, res) => {
     Worker.find({}, {_id: 0}).exec((err, items) => {
+        res.send(items);
+    });
+});
+
+app.get('/api/testimonial', (req, res) => {
+    Testimonial.find({}, {_id: 0}).exec((err, items) => {
         res.send(items);
     });
 });
