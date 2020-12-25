@@ -1,7 +1,13 @@
 const mongoose = require('mongoose');
 const express = require('express');
+const axios = require('axios')
+
 const app = express();
 const port = process.env.PORT || 3000;
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect(`mongodb+srv://${process.env.MONGODBUSER}:${process.env.MONGODBPASS}@\
 ${process.env.MONGODBSERVER}:/${process.env.MONGODBNAME}?retryWrites=true&w=majority`,
@@ -105,6 +111,17 @@ app.get('/api/testimonial', (req, res) => {
     });
 });
 
+app.post('/submit', (req, res) => {
+    const {name, phone, email, comment, captcha} = req.body
+    try {
+        if (!captcha)
+            throw new Error("No captcha")
+        res.send({...req.body, success: true})
+    } catch (e) {
+        res.send({success: false, error: e.message})
+    }
+});
+
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${process.env.PORT}`);
+    console.log(`Example app listening at http://localhost:${port}`);
 });
